@@ -86,11 +86,11 @@ showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
 
-  function buildAndShowHomeHTML(value){
-  document.querySelector("#main-content")
-    .innerHTML = value;
+function (responseText) {
+    document.querySelector("#main-content")
+      .innerHTML = buildAndShowHomeHTML(responseText);
   }, // ***** <---- TODO: STEP 1: Substitute [...] ******
-  false); // Explicitly setting the flag to get JSON from server processed into an object literal
+  true); // Explicitly setting the flag to get JSON from server processed into an object literal
 });
 // *** finish **
 
@@ -109,6 +109,7 @@ function buildAndShowHomeHTML (categories) {
       // variable's name implies it expects.
       var random = chooseRandomCategory(categories);
       var randomCategory = "" + random.short_name;
+    
      
      
       // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
